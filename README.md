@@ -83,4 +83,6 @@ Optional - Using IntelliJ IDEA:
 - Right-click src/test/java/com/kanban and select Run 'All Tests' with Coverage.
 - View coverage in the Coverage tool window.
 
+<img width="1035" height="306" alt="KanbanCodeCoverage" src="https://github.com/user-attachments/assets/d70279bb-01c7-47e3-8790-4aea36bd9a5a" />
+
 ---
