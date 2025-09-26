@@ -48,9 +48,7 @@ public class RefreshTokenService {
 
     @Transactional
     public Optional<RefreshToken> deleteRefreshToken(String token) {
-        if (refreshTokenRepository.findByToken(token).isPresent())
-            return refreshTokenRepository.deleteRefreshTokenByToken(token);
-        return Optional.empty();
+        return refreshTokenRepository.deleteRefreshTokenByToken(token);
     }
 
     public RefreshToken verifyExpiration(RefreshToken token) {

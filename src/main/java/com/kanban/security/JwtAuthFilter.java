@@ -6,6 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -24,16 +25,14 @@ import java.io.IOException;
 @Component
 @AllArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
-    @Autowired
+
     private JwtService jwtService;
-    @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-    @Autowired
     private UserDetailsServiceImplementation userDetailsServiceImpl;
 
     @Override
     protected void doFilterInternal(
-            HttpServletRequest request,
+            @NotNull HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain
     ) throws ServletException, IOException {
@@ -52,8 +51,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                 );
                         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                    } else throw new BadCredentialsException("Invalid JWT token");
-                }
+                    }
+                } else throw new BadCredentialsException("Invalid JWT token");
             }
             filterChain.doFilter(request, response);
         } catch (ExpiredJwtException e) {

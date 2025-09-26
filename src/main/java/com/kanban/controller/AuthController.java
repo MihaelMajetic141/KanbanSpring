@@ -13,7 +13,7 @@ import com.kanban.repository.UserInfoRepository;
 import com.kanban.security.JwtService;
 import com.kanban.security.RefreshTokenService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,19 +31,14 @@ import java.util.Set;
 @RestController
 @CrossOrigin(maxAge = 3600)
 @RequestMapping("/api/auth")
+@AllArgsConstructor
 public class AuthController {
 
-    @Autowired
     AuthenticationManager authenticationManager;
-    @Autowired
     RefreshTokenService refreshTokenService;
-    @Autowired
     UserInfoRepository userInfoRepository;
-    @Autowired
     RoleRepository roleRepository;
-    @Autowired
     JwtService jwtService;
-    @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping("/register")

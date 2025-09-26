@@ -9,4 +9,5 @@ public class BeanUtilsWrapper {
     public void copyProperties(Object source, Object target, String... ignoreProperties) {
         BeanUtils.copyProperties(source, target, ignoreProperties);
     }
+
 }

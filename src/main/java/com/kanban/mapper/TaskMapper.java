@@ -23,7 +23,7 @@ public class TaskMapper {
                 .status(task.getStatus() != null ? task.getStatus().name() : null)
                 .priority(task.getPriority() != null ? task.getPriority().name() : null)
                 .dueAt(task.getDueAt())
-                .assigneeIds(task.getTaskAssignees().stream().map(UserInfo::getId).collect(Collectors.toList()))
+                .assigneeIds(task.getTaskAssignees().stream().map(UserInfo::getId).toList())
                 .build();
     }
 
